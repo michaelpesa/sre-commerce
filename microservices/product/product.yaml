@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+      - name: product
+        image: 411341417868.dkr.ecr.us-east-1.amazonaws.com/product:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product
+spec:
+  selector:
+    app: product
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+

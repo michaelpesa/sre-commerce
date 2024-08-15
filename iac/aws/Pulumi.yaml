@@ -1,0 +1,10 @@
+name: sre-commerce
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+description: AWS Pulumi configs for sre-commerce
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
